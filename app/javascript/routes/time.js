@@ -11,7 +11,7 @@ function drawBasic() {
       let dataView = document.querySelector('#chart_time');
       let dataGoogle = dataView.getAttribute('data-google')
 
-      data.addRows(dataGoogle);
+      data.addRows(JSON.parse(dataGoogle));
 
       var options = {
         hAxis: {
