@@ -30,17 +30,25 @@
         </div>
         <div class="col-6">
           <div class="card mb-3 text-center move-bottom-up bg-info">
-            <h4 class="card-title text-white"><%= @shipments.find_by(status: "complete")[:status].capitalize %><br />Shipments</h4>
+            <h4 class="card-title text-white"><%= @shipments.find_by(status: "completed")[:status].capitalize %><br />Shipments</h4>
             <div class="fa-10x">
               <span class="fa-layers fa-fw">
                 <i class="fas fa-circle text-success"></i>
-                <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-9 down-0" style="font-weight:900"><%= @shipments.find_by(status: "complete")[:amount] %></span>
+                <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-9 down-0" style="font-weight:900"><%= @shipments.find_by(status: "completed")[:amount] %></span>
               </span>
             </div>
           </div>
         </div>
       </div> <!-- Row for badges end -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-3 text-center move-bottom-up bg-info">
+            <h4 class="card-title text-white">Orders During The Day</h4>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <div id="chart_time" data-google="<%= @google_array %>"></div>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div> <!-- Row end -->
 </div> <!-- Container end -->

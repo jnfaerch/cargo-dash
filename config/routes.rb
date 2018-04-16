@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'order/index'
   get 'shipment/index'
   mount Dashing::Engine, at: Dashing.config.engine_path
   devise_for :users
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   root to: 'routes#index'
   resources :routes, only: [ :index, :show ]
   resources :shipments, only: [ :index ]
+  resources :orders, only: [ :index ]
 end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
