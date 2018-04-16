@@ -2,6 +2,7 @@ class RoutesController < ApplicationController
 
   def index
     @routes = Route.all
+    @shipments = Shipment.all
   end
 
   def show

@@ -2,7 +2,7 @@
   <div class="row move-top-down">
     <div class="col-12 col-sm-6 col-md-3 text-center">
       <div class="card text-white mb-3 bg-info">
-        <h4>Popular origin</h4>
+        <h4>Popular Origin</h4>
         <p><%= @routes.first[:origin] %></p>
         <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @routes.first[:origin] %>&zoom=6&size=400x400&markers=color:red%7Clabel:S%7C<%= @routes.first[:origin] %>&key=<%= ENV["google_maps_api_key"] %>" class="img-fluid rounded">
       </div>
@@ -14,5 +14,33 @@
         <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @routes.first[:destination] %>&zoom=6&size=400x400&markers=color:red%7Clabel:S%7C<%= @routes.first[:destination] %>&key=<%= ENV["google_maps_api_key"] %>" class="img-fluid rounded">
       </div>
     </div>
+
+    <div class="col-12 col-sm-6 col-md-3 text-center">
+      <div class="row"> <!-- Badges -->
+        <div class="col-6">
+          <div class="card mb-3 text-center move-bottom-up bg-info">
+            <h4 class="card-title text-white"><%= @shipments.find_by(status: "open")[:status].capitalize %><br />Shipments</h4>
+            <div class="fa-10x">
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-circle text-warning"></i>
+                <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-9 down-0" style="font-weight:900"><%= @shipments.find_by(status: "open")[:amount] %></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card mb-3 text-center move-bottom-up bg-info">
+            <h4 class="card-title text-white"><%= @shipments.find_by(status: "complete")[:status].capitalize %><br />Shipments</h4>
+            <div class="fa-10x">
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-circle text-success"></i>
+                <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-9 down-0" style="font-weight:900"><%= @shipments.find_by(status: "complete")[:amount] %></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div> <!-- Row for badges end -->
+    </div>
+
   </div> <!-- Row end -->
 </div> <!-- Container end -->

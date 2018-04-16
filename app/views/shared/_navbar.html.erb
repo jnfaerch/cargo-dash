@@ -8,8 +8,9 @@
   <div class="navbar-wagon-right d-flex">
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, method: :delete do %>
-        <span class="navbar-wagon-item navbar-wagon-link">Log-out</span>
-        <i class="fas fa-sign-out-alt"></i>
+        <span class="navbar-wagon-item navbar-wagon-link">
+          <i class="fas fa-sign-out-alt fa-lg"></i>
+        </span>
       <% end %>
     <% else %>
       <!-- Login link (when logged out) -->
