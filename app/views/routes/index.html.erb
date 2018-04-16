@@ -1,6 +1,8 @@
 <div>
   <h2>Popular origin</h2>
+  <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @routes.first[:origin] %>&zoom=6&size=400x400&markers=color:red%7Clabel:S%7C<%= @routes.first[:origin] %>&key=<%= ENV["google_maps_api_key"] %>"></img>
   <p><%= @routes.first[:origin] %></p>
   <h2>Popular destination</h2>
+  <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @routes.first[:destination] %>&zoom=6&size=400x400&markers=color:red%7Clabel:S%7C<%= @routes.first[:destination] %>&key=<%= ENV["google_maps_api_key"] %>"></img>
   <p><%= @routes.first[:destination] %></p>
 </div>
