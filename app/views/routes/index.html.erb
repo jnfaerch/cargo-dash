@@ -1,23 +1,38 @@
 <div class="container-fluid">
-  <div class="row move-top-down">
-    <div class="col-12 col-sm-6 col-md-3 text-center">
-      <div class="card text-white mb-3 bg-info">
-        <h4>Popular Origin</h4>
-        <p><%= @routes.first[:origin] %></p>
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @routes.first[:origin] %>&zoom=6&size=400x400&markers=color:red%7Clabel:S%7C<%= @routes.first[:origin] %>&key=<%= ENV["google_maps_api_key"] %>" class="img-fluid rounded">
-      </div>
-    </div>
-    <div class="col-12 col-sm-6 col-md-3 text-center">
-      <div class="card text-white mb-3 bg-info">
-        <h4>Popular Destination</h4>
-        <p><%= @routes.first[:destination] %></p>
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @routes.first[:destination] %>&zoom=6&size=400x400&markers=color:red%7Clabel:S%7C<%= @routes.first[:destination] %>&key=<%= ENV["google_maps_api_key"] %>" class="img-fluid rounded">
-      </div>
-    </div>
+  <div class="row move-top-down"> <!-- Wrapper row -->
+    <div class="col-12 col-lg-6 text-center">
+    <div class="row">
+        <div class="col-12 col-sm-6 text-center">
+          <div class="card text-white mb-3 bg-info">
+            <h4>Popular Origin</h4>
+            <p><%= @routes.first[:origin] %></p>
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @routes.first[:origin] %>&zoom=6&size=400x400&markers=color:red%7Clabel:S%7C<%= @routes.first[:origin] %>&key=<%= ENV["google_maps_api_key"] %>" class="img-fluid rounded">
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 text-center">
+          <div class="card text-white mb-3 bg-info">
+            <h4>Popular Destination</h4>
+            <p><%= @routes.first[:destination] %></p>
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @routes.first[:destination] %>&zoom=6&size=400x400&markers=color:red%7Clabel:S%7C<%= @routes.first[:destination] %>&key=<%= ENV["google_maps_api_key"] %>" class="img-fluid rounded">
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card mb-3 text-center move-bottom-up bg-info">
+            <h4 class="card-title text-white">Visitor Requests</h4>
+            <div class="fa-10x">
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-circle text-success"></i>
+                <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-9 down-0" style="font-weight:900"><%= @customer_requests %></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div> <!-- Row end -->
+    </div> <!-- Col end -->
 
-    <div class="col-12 col-sm-6 col-md-3 text-center">
+    <div class="col-12 col-lg-6 text-center">
       <div class="row"> <!-- Badges -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <div class="card mb-3 text-center move-bottom-up bg-info">
             <h4 class="card-title text-white"><%= @shipments.find_by(status: "open")[:status].capitalize %><br />Shipments</h4>
             <div class="fa-10x">
@@ -28,7 +43,7 @@
             </div>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <div class="card mb-3 text-center move-bottom-up bg-info">
             <h4 class="card-title text-white"><%= @shipments.find_by(status: "completed")[:status].capitalize %><br />Shipments</h4>
             <div class="fa-10x">
@@ -40,7 +55,7 @@
           </div>
         </div>
       </div> <!-- Row for badges end -->
-      <div class="row">
+      <div class="row"> <!-- orders and customers -->
         <div class="col-12">
           <div class="card mb-3 text-center move-bottom-up bg-info">
             <h4 class="card-title text-white">Orders During The Day</h4>
@@ -48,7 +63,24 @@
             <div id="chart_time" data-google="<%= @google_array %>"></div>
           </div>
         </div>
-      </div>
-    </div>
-  </div> <!-- Row end -->
+        <div class="col-12">
+          <div class="card mb-3 text-center move-bottom-up bg-info">
+            <h4 class="card-title text-white">New Customers This Week</h4>
+            <table class="table table-striped text-left">
+              <tbody>
+                <% @new_customers.each_with_index do |e, i| %>
+                  <tr>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td><i class="fas fa-user-plus"></i> <strong><%= e.name %></strong></td>
+                    <td><i class="fas fa-shipping-fast"></i> <strong><%= e.company %></strong></td>
+                    <td><i class="fas fa-euro-sign"></i> <strong><%= number_with_delimiter(e.shipmentRate) %></strong></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> <!-- Row for orders and customers end -->
+    </div> <!-- Col end -->
+  </div>  <!-- Wrapper row end -->
 </div> <!-- Container end -->

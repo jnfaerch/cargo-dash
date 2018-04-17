@@ -4,6 +4,7 @@ User.destroy_all
 Route.destroy_all
 Shipment.destroy_all
 Order.destroy_all
+Customer.destroy_all
 
 User.create!(email: "johan@faer.ch", password: "123456")
 
@@ -124,6 +125,57 @@ Order.create!([{
   {
   time: "24.00",
   amount: 20
+  }])
+
+puts "Creating customers..."
+
+Customer.create!([{
+  name: "Peter Winsley",
+  company: "Freight GmbH",
+  login: true,
+  shipmentRate: 2140
+  },
+  {
+  name: "Frank Wright",
+  company: "Box GmbH",
+  login: true,
+  shipmentRate: 15377
+  },
+  {
+  name: "John Knight",
+  company: "Shipper GmbH",
+  login: true,
+  shipmentRate: 1503
+  },
+  {
+  name: "Gordon Ramsey",
+  company: "Cooking GmbH",
+  login: true,
+  shipmentRate: 27992
+  },
+  {
+  name: "Guest",
+  company: nil,
+  login: false,
+  shipmentRate: nil
+  },
+  {
+  name: "Guest",
+  company: nil,
+  login: false,
+  shipmentRate: nil
+  },
+  {
+  name: "Guest",
+  company: nil,
+  login: false,
+  shipmentRate: nil
+  },
+  {
+  name: "Guest",
+  company: nil,
+  login: false,
+  shipmentRate: nil
   }])
 
 puts "Finished!"
