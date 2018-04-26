@@ -5,3 +5,12 @@
 .move-bottom-up {
   padding-bottom: 10px;
 }
+
+#map_canvas {
+  height: 100%;
+  width: 100%;
+}
+
+.card-height-enforced {
+   height: calc(100% - 1rem);
+}
