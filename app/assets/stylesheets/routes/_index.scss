@@ -12,5 +12,6 @@
 }
 
 .card-height-enforced {
+   min-height: 300px;
    height: calc(100% - 1rem);
 }
